@@ -27,7 +27,7 @@ export default Vue.extend({
   name: "HeaderComponent",
 });
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .header {
   margin: 0 0 48px 0;
   &__body {
@@ -76,6 +76,7 @@ export default Vue.extend({
     font-weight: 400;
     line-height: 150%;
     font-size: 0.875rem;
+    padding: 5px;
 
     text-decoration: none;
     color: #343030;

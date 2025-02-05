@@ -42,6 +42,10 @@ h2 {
   font-weight: 400;
 }
 .btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
   min-width: 122px;
   width: 100%;
   border: none;

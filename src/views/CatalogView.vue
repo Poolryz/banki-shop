@@ -4,14 +4,17 @@
       <div class="catalog__content _container">
         <h1 class="catalog__title">Картины эпохи Возрождения</h1>
         <ul class="catalog__list list">
-          <li class="list__item">
-            <img class="list__img" src="../assets/1.png" alt="Картина" />
-            <h2 class="list__title">«Рождение Венеры» Сандро Боттичелли</h2>
-            <div class="list__block">
-              <p class="list__price">1 000 000 $</p>
-              <button class="list__btn btn">Купить</button>
-            </div>
-          </li>
+          <ItemComponent
+            v-for="item in products"
+            :key="item.id"
+            :title="item.title"
+            :sold="item.sold"
+            :sell="item.sell"
+            :preventPrice="item.preventPrice"
+            :price="item.price"
+            :image="item.image"
+            :inCard="item.inCard"
+          />
         </ul>
       </div>
     </div>
@@ -19,11 +22,22 @@
 </template>
 <script>
 import Vue from "vue";
+import ItemComponent from "../components/ItemComponent.vue";
+import { mapGetters } from "vuex";
 export default Vue.extend({
   name: "CatalogView",
+  components: {
+    ItemComponent,
+  },
+  computed: {
+    ...mapGetters(["productsItem"]),
+    products() {
+      return this.productsItem;
+    },
+  },
 });
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .catalog {
   &__body {
   }
@@ -38,31 +52,11 @@ export default Vue.extend({
   }
 }
 .list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
   list-style: none;
   margin: 0 0 0 0;
   padding: 0 0 0 0;
-  &__item {
-    max-width: 280px;
-  }
-
-  &__img {
-  }
-
-  &__title {
-    margin: 20px 0 22px 24px;
-  }
-
-  &__block {
-    display: flex;
-    justify-content: space-between;
-    margin: 0 24px;
-  }
-
-  &__price {
-  }
-
-  &__btn {
-    flex: 0 0;
-  }
 }
 </style>
